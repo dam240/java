@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cd.da51.use.dao.userDao">
+<insert id="insertUsers" parameterType="com.cd.use.model.user"   useGeneratedKeys="true" keyProperty="id">
+insert into users(login_id,password,name,xing,card,drawable,phone,create_tiem,cont,province,city) values(#{login_id},#{psw},#{name},#{xing},#{card},#{drawable},#{phone},#{create_tiem},#{cont},#{province},#{city})
+</insert>
+<delete id="dropUsers" parameterType="long" >
+delete from users where id=#{id}
+</delete>
+<select id="queryUser" parameterType="com.cd.use.model.user" resultType="com.cd.use.model.user" >
+select login_id,name ,xing,card, drawable,phone,create_tiem,cont,
+province,city from users where phone=#{phone} or login_id=#{login_id}
+</select>
+
+
+<select id="queryUserPsw" parameterType="com.cd.use.model.user" resultType="String" >
+select password as psw from users 
+<where>
+<if test="phone!=null and phone!=''" >
+phone=#{phone}
+</if>
+<if test="login_id!=null and login_id!=''" >
+login_id=#{login_id}
+</if>
+</where>
+
+</select>
+</mapper>

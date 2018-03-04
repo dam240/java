@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cd.da51.admin.dao.interfaces.userAdminDao">
+ <insert id="insertAdmin" parameterType="com.cd.da51.admin.model.admin">
+insert into Admin(id,name,create_tiem,ten,sex,level,pray,cont,province,city) values(#{id},#{name},#{create_tiem},#{ten},#{sex},#{level},#{pray},#{cont},#{province},#{city})
+</insert> 
+
+
+<insert id="insertUserAdmin" parameterType="com.cd.da51.admin.model.userAdmin" useGeneratedKeys="true" keyProperty="id">
+insert into userAdmin(admin_id,password) values(#{admin_Id},#{password})
+</insert> 
+ 
+</mapper>
